@@ -1,0 +1,17 @@
+{
+  "name": "MultiVision",
+  "version": "0.0.0",
+  "authors": [
+    "jerry"
+  ],
+  "description": "\"Extreme Tech Training\"",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "jquery": "^3.3.1",
+    "angular": "^1.7.2",
+    "angular-resource": "^1.7.2",
+    "angular-route": "^1.7.2",
+    "toastr": "~2.0.1"
+  }
+}
