@@ -2,8 +2,10 @@ var express = require('express');
 var stylus = require('stylus');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
 
 var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+var mongopwd = process.env.PASSWORD;
 
 var app = express();
 
@@ -27,6 +29,16 @@ app.use(stylus.middleware(
 
 // any requests that much files in public directory , return the file
 app.use(express.static(__dirname + '/public'));  
+
+// mongoose connection
+mongoose.connect('mongodb://jezzamondev:' + mongopwd + '@cluster0-shard-00-00-hkx6v.mongodb.net:27017,cluster0-shard-00-01-hkx6v.mongodb.net:27017,cluster0-shard-00-02-hkx6v.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true', { useNewUrlParser: true });
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error'));
+db.once('open', function callback() {
+  console.log('your db is opened');
+});
+
+
 
 app.get('/partials/:partialPath', function(req, res) {
   res.render('partials/' + req.params.partialPath);
