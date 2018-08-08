@@ -31,11 +31,19 @@ app.use(stylus.middleware(
 app.use(express.static(__dirname + '/public'));  
 
 // mongoose connection
-mongoose.connect('mongodb://jezzamondev:' + mongopwd + '@cluster0-shard-00-00-hkx6v.mongodb.net:27017,cluster0-shard-00-01-hkx6v.mongodb.net:27017,cluster0-shard-00-02-hkx6v.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true', { useNewUrlParser: true });
+mongoose.connect('mongodb+srv://jezzamondev:' + mongopwd +'@cluster0-hkx6v.mongodb.net/multivision?retryWrites=true', { useNewUrlParser: true });
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error'));
 db.once('open', function callback() {
-  console.log('your db is opened');
+  console.log('your db is connected');
+});
+
+var messageSchema = mongoose.Schema({message: String});
+var Message = mongoose.model('Message', messageSchema);
+var mongoMessage;
+
+Message.findOne().exec(function(err, messageDoc) {
+  mongoMessage = messageDoc.message;
 });
 
 
@@ -45,7 +53,9 @@ app.get('/partials/:partialPath', function(req, res) {
 });
 
 app.get('*', function(req, res) {
-  res.render('index');
+  res.render('index', {
+    mongoMessage: mongoMessage
+  });
 });
 
 var port = 3030;

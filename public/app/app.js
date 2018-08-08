@@ -9,5 +9,5 @@ angular.module('app', ['ngResource', 'ngRoute'])
   .controller('mainCtrl', [
     '$scope', 
     function($scope) {
-      $scope.myVar = "hello angular";
+      $scope.myVar = "main-ctrl - hello angular";
   }]);
