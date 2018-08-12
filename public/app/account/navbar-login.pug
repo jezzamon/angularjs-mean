@@ -1,5 +1,5 @@
 div(ng-controller="mvNavBarLoginCtrl")
-  form.form-inline
+  form.form-inline(ng-hide="identity.isAuthenticated()")
     .form-group
       input.form-control(placeholder="Email", ng-model="username")
     .form-group
