@@ -1,0 +1,29 @@
+var express = require('express');
+var stylus = require('stylus');
+var logger = require('morgan');
+var bodyParser = require('body-parser');
+
+
+module.exports = function(app, config) {
+  function compile(str, path) {
+    return stylus(str).set('filename', path);
+  }
+  
+  app.set('views', config.rootPath + '/server/views');
+  app.set('view engine', 'pug');
+  app.use(logger('dev'));
+  
+  app.use(bodyParser.urlencoded({ extended: true}));
+  app.use(bodyParser.json());
+  
+  app.use(stylus.middleware(
+    {
+      src: config.rootPath + '/public',
+      compile: compile
+    }
+  ));
+  
+  // any requests that much files in public directory , return the file
+  app.use(express.static(config.rootPath + '/public'));  
+}
+
