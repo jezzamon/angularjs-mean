@@ -1,2 +1,12 @@
-h1 This is a partial
-h2 {{ myVar }}
+.main
+  .container
+    .jumbotron
+      h1 Jezzamon Media
+      p Pitch crowdsource ramen social proof sales gamification prototype
+
+    .row
+      .col-md-6
+        div(ng-include="'/partials/featured-courses'")
+      .col-md-6
+        div(ng-include="'/partials/new-courses'")
+    

@@ -1,0 +1,5 @@
+.card
+  .card-header.text-center Featured Shows
+  .card-body
+    .row(ng-repeat="course in courses | filter: { featured: true}")
+      .col-md-12 {{course.name}}
