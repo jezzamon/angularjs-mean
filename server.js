@@ -30,8 +30,15 @@ app.use(stylus.middleware(
 // any requests that much files in public directory , return the file
 app.use(express.static(__dirname + '/public'));  
 
+
+if (env === 'development') {
+  // mongoose connection
+mongoose.connect('mongodb+srv://jezzamondev:' + mongopwd +'@cluster0-hkx6v.mongodb.net/multivision?retryWrites=true', { useNewUrlParser: true });
+} else {
 // mongoose connection
 mongoose.connect('mongodb+srv://jezzamondev:' + mongopwd +'@cluster0-hkx6v.mongodb.net/multivision?retryWrites=true', { useNewUrlParser: true });
+}
+
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error'));
 db.once('open', function callback() {
@@ -58,6 +65,6 @@ app.get('*', function(req, res) {
   });
 });
 
-var port = 3030;
+var port = process.env.PORT || 3030;
 app.listen(port);
 console.log('listening on port ' + port + '...')
