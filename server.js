@@ -18,32 +18,35 @@ require('./server/config/express') (app, config);
 require('./server/config/mongoose') (config);
 
 var User = mongoose.model('User');
+
+// listener to the passport.authenticate local strategy 
 passport.use(new LocalStrategy(
-  function(username, password, doneCb) {
+  function(username, password, done) {
     User.findOne({ username: username}).exec(function(err, user) {
       if (user) {
-        return doneCb(null, user);
+        return done(null, user);
       } else {
-        return doneCb(null, false);
+        return done(null, false);
       }
 
     })
   }
 ));
 
-passport.serializeUser(function(user, doneCb) {
+// https://stackoverflow.com/questions/27637609/understanding-passport-serialize-deserialize
+passport.serializeUser(function(user, done) {
   if(user) {
-    doneCb(null, user.id);
+    done(null, user._id);
   }
 })
 
-passport.deserializeUser(function(id, doneCb) {
+passport.deserializeUser(function(id, done) {
   
   User.findOne({_id:id}).exec(function(err,user) {
     if(user) {
-      return doneCb(null, user);
+      return done(null, user);
     } else {
-      return doneCb(null, false);
+      return done(null, false);
     }
   })
 })

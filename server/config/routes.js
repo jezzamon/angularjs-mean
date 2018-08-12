@@ -14,7 +14,8 @@ module.exports = function(app) {
   app.post('/login', function(req, res, next) {
     
     // set up authenticate function
-    var auth = passport.authenticate('local', function(err, usuer) {
+    var auth = passport.authenticate('local', function(err, user) {
+      
       if(err) { return next(err);}
       if(!user) { res.send({success: false})}
 
@@ -22,9 +23,9 @@ module.exports = function(app) {
       req.logIn(user, function(err) {
         if(err) { return next(err);}
         
-        res.send(send(
+        res.send(
           { success: true, user:user }
-        ));
+        );
       });
     });
 

@@ -22,7 +22,8 @@ module.exports = function(app, config) {
       resave: false,
       saveUninitialized: false
     }));
-  app.user(passport.session());
+  app.use(passport.initialize());
+  app.use(passport.session());
   app.use(stylus.middleware(
     {
       src: config.rootPath + '/public',
