@@ -34,7 +34,7 @@ app.use(express.static(__dirname + '/public'));
 if (env === 'development') {
   // mongoose connection
 mongoose.connect('mongodb+srv://jezzamondev:' + mongopwd +'@cluster0-hkx6v.mongodb.net/multivision?retryWrites=true', { useNewUrlParser: true });
-} else {
+} else  if (env === 'production') {
 // mongoose connection
 mongoose.connect('mongodb+srv://jezzamondev:' + mongopwd +'@cluster0-hkx6v.mongodb.net/multivision?retryWrites=true', { useNewUrlParser: true });
 }
