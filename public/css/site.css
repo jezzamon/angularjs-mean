@@ -13,3 +13,9 @@ footer {
 footer p {
   border-top: 1px solid #d7e0e2;
 }
+.form-inline .form-group {
+  margin-left: 10px;
+}
+.form-inline button {
+  margin-left: 10px;
+}
