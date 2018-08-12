@@ -2,6 +2,7 @@ var express = require('express');
 var mongoose = require('mongoose');
 
 var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+// var env = 'production';
 
 
 var app = express();
