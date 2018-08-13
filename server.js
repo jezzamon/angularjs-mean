@@ -12,7 +12,7 @@ var app = express();
 // invoke function/module express.js passing env to take correct obj key
 var config = require('./server/config/config')[env];
 
-// invoke your custom modules (express, mongoose, routes) passing in arguments
+// invoke your custom modules (express, mongoose) passing in arguments
 require('./server/config/express') (app, config);
 
 require('./server/config/mongoose') (config);
@@ -23,7 +23,7 @@ var User = mongoose.model('User');
 passport.use(new LocalStrategy(
   function(username, password, done) {
     User.findOne({ username: username}).exec(function(err, user) {
-      if (user) {
+      if (user && user.authenticate(password)) {
         return done(null, user);
       } else {
         return done(null, false);
@@ -51,6 +51,7 @@ passport.deserializeUser(function(id, done) {
   })
 })
 
+// invoke your custom modules (routes) passing in arguments
 require('./server/config/routes') (app);
 
 app.listen(config.port);
