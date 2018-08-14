@@ -6,6 +6,8 @@ div(ng-controller="mvNavBarLoginCtrl")
       input.form-control(type="password", placeholder="Password", ng-model="password")
     button.btn.btn-primary(ng-click="signin(username, password)") Sign In
   ul.nav.navbar-nav.navbar-right(ng-show="identity.isAuthenticated()")
-  a.dropdown-toggle(href="", data-toggle="dropdown")
-    | {{identity.currentUser.firstName + " "" identity.currentUser.lastName}}
-    b.caret
+    li.dropdown
+      a.dropdown-toggle(href="", data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+        | {{identity.currentUser.firstName + " " + identity.currentUser.lastName}}
+      .dropdown-menu(aria-labelledby='dropdownMenuButton')
+        a.dropdown-item(href='#' ng-click="signout()") Sign out

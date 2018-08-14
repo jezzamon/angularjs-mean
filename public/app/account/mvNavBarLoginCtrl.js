@@ -6,7 +6,8 @@ angular.module('app')
     'mvIdentity',
     'mvNotifier',
     'mvAuth',
-    function($scope, $http, mvIdentity, mvNotifier, mvAuth) {
+    '$location',
+    function($scope, $http, mvIdentity, mvNotifier, mvAuth, $location) {
       // vars
       $scope.identity = mvIdentity;
       
@@ -16,10 +17,21 @@ angular.module('app')
           .then(function(success) {
             if(success) {
               mvNotifier.notify('You have successfully logged in');
+              console.log('logged in')
             } else {
               mvNotifier.notify('Incorrect username/password');
+              console.log('logged out')
             }
           })
+      }
+
+      $scope.signout = function() {
+        mvAuth.logoutUser().then(function() {
+          $scope.username = "";
+          $scope.password = "";
+          mvNotifier.notify('You have successfully logged out');
+          $location.path('/');
+        })
       }
     }
   ]);

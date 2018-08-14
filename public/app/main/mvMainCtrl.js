@@ -15,6 +15,7 @@ angular.module('app')
       {name: 'Barry', featured: false, published: new Date(2018, 3, 16, 33)},
       {name: 'Insecure', featured: false, published: new Date(2018, 3, 16, 33)},
       {name: 'Atlanta', featured: false, published: new Date(2018, 3, 16, 33)},
+      {name: 'The defiant ones', featured: false, published: new Date(2018, 3, 16, 33)},
       
     ]
 }]);

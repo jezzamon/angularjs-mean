@@ -13,6 +13,16 @@ angular.module('app')
           }
         });
         return deferred.promise;
+      },
+      logoutUser: function() {
+        var deferred = $q.defer();
+        $http.post('/logout', {logout: true}).then(function() {
+          mvIdentity.currentUser = undefined;
+          deferred.resolve(true);
+        });
+
+        return deferred.promise;
+
       }
     }
   })
