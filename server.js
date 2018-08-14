@@ -33,6 +33,7 @@ passport.use(new LocalStrategy(
   }
 ));
 
+
 // https://stackoverflow.com/questions/27637609/understanding-passport-serialize-deserialize
 passport.serializeUser(function(user, done) {
   if(user) {
