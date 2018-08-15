@@ -9,5 +9,8 @@ div(ng-controller="mvNavBarLoginCtrl")
     li.dropdown
       a.dropdown-toggle(href="", data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
         | {{identity.currentUser.firstName + " " + identity.currentUser.lastName}}
-      .dropdown-menu(aria-labelledby='dropdownMenuButton')
-        a.dropdown-item(href='#' ng-click="signout()") Sign out 
+      ul.dropdown-menu(aria-labelledby='dropdownMenuButton')
+        li.dropdown-item(ng-show="identity.currentUser.isAdmin()")
+          a(href='/admin/user') User Admin
+        li.dropdown-item
+          a(href='#' ng-click="signout()") Sign out

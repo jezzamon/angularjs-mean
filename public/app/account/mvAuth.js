@@ -1,16 +1,25 @@
 angular.module('app')
-  .factory('mvAuth', function($http, mvIdentity, $q) {
+  .factory('mvAuth', [
+    '$http',
+    'mvIdentity',
+    '$q',
+    'mvUser',
+    function($http, mvIdentity, $q, mvUser) {
     return {
       authenticateUser: function(username, password) {
         var deferred = $q.defer();
+        
         $http.post('/login', {username: username, password: password})
-        .then(function(res) {
-          if(res.data.success) {
-            mvIdentity.currentUser = res.data.user;
-            deferred.resolve(true);
-          } else {
-            deferred.resolve(false);
-          }
+          .then(function(res) {
+            if(res.data.success) {
+              var user = new mvUser();
+              // take data returned from $http post and add it into user obj we created
+              angular.extend(user, res.data.user);
+              mvIdentity.currentUser = user;
+              deferred.resolve(true);
+            } else {
+              deferred.resolve(false);
+            }
         });
         return deferred.promise;
       },
@@ -25,4 +34,4 @@ angular.module('app')
 
       }
     }
-  })
+  }])
