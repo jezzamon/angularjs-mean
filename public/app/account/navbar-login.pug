@@ -11,6 +11,6 @@ div(ng-controller="mvNavBarLoginCtrl")
         | {{identity.currentUser.firstName + " " + identity.currentUser.lastName}}
       ul.dropdown-menu(aria-labelledby='dropdownMenuButton')
         li.dropdown-item(ng-show="identity.currentUser.isAdmin()")
-          a(href='/admin/user') User Admin
+          a(href='/admin/users') User Admin
         li.dropdown-item
           a(href='#' ng-click="signout()") Sign out
