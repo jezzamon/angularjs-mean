@@ -32,6 +32,13 @@ angular.module('app')
 
         return deferred.promise;
 
+      },
+      authorizeCurrentUserForRoute: function(role) {
+        if (mvIdentity.isAuthorized(role)) {
+          return true;
+        } else {
+          return $q.reject('not authorized')
+        }
       }
     }
   }])

@@ -19,6 +19,9 @@ angular.module('app')
       currentUser: currentUser,
       isAuthenticated: function() {
         return !!this.currentUser;
+      },
+      isAuthorized: function(role) {
+        return !!this.currentUser && currentUser.roles.indexOf('admin') > -1;
       }
     }
   }]);

@@ -1,21 +1,21 @@
 angular.module('app', ['ngResource', 'ngRoute'])
   
+  var routeRoleChecks = {
+    admin:{ 
+      auth: function(mvAuth) {
+              return mvAuth.authorizeCurrentUserForRoute('admin')
+          }
+      } 
+  }
+
+  
   .config(function($routeProvider, $locationProvider) {
     $locationProvider.html5Mode(true);
 
     $routeProvider
       .when('/', { templateUrl: '/partials/main/main', controller: 'mvMainCtrl' })
       .when('/admin/users', { templateUrl: '/partials/admin/user-list', 
-        controller: 'mvUserListCtrl',
-        resolve: {
-          auth: function(mvIdentity, $q) {
-            if (mvIdentity.currentUser && mvIdentity.currentUser.roles.indexOf('admin') > -1) {
-              return true;
-            } else {
-              return $q.reject('not authorized')
-            }
-          }
-        }
+        controller: 'mvUserListCtrl', resolve: routeRoleChecks.admin
       });
       
   });
