@@ -12,6 +12,10 @@
     "angular": "^1.7.2",
     "angular-resource": "^1.7.2",
     "angular-route": "^1.7.2",
-    "toastr": "~2.0.1"
+    "toastr": "~2.0.1",
+    "angular-mocks": "^1.7.3"
+  },
+  "resolutions": {
+    "angular": "1.7.2"
   }
 }

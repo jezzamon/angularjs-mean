@@ -1,15 +1,14 @@
 angular.module('app', ['ngResource', 'ngRoute'])
   
-  var routeRoleChecks = {
-    admin:{ 
-      auth: function(mvAuth) {
-              return mvAuth.authorizeCurrentUserForRoute('admin')
-          }
-      } 
-  }
-
-  
   .config(function($routeProvider, $locationProvider) {
+    var routeRoleChecks = {
+      admin:{ 
+        auth: function(mvAuth) {
+                return mvAuth.authorizeCurrentUserForRoute('admin')
+            }
+        } 
+    }
+    
     $locationProvider.html5Mode(true);
 
     $routeProvider
