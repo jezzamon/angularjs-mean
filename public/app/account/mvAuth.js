@@ -23,6 +23,20 @@ angular.module('app')
         });
         return deferred.promise;
       },
+
+      createUser: function(mvUserData) {
+        var newUser = new mvUser(mvUserData);
+        var deferred = $q.defer();
+
+        newUser.$save().then(function() {
+          mvIdentity.currentUser = newUser;
+          deferred.resolve();
+        }, function(res) {
+          deferred.reject(res.data.reason);
+        });
+
+        return deferred.promise;
+      },
       logoutUser: function() {
         var deferred = $q.defer();
         $http.post('/logout', {logout: true}).then(function() {

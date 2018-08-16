@@ -1,6 +1,7 @@
 angular.module('app', ['ngResource', 'ngRoute'])
   
   .config(function($routeProvider, $locationProvider) {
+    
     var routeRoleChecks = {
       admin:{ 
         auth: function(mvAuth) {
@@ -15,6 +16,9 @@ angular.module('app', ['ngResource', 'ngRoute'])
       .when('/', { templateUrl: '/partials/main/main', controller: 'mvMainCtrl' })
       .when('/admin/users', { templateUrl: '/partials/admin/user-list', 
         controller: 'mvUserListCtrl', resolve: routeRoleChecks.admin
+      })
+      .when('/signup', { templateUrl: '/partials/account/signup', 
+        controller: 'mvSignupCtrl'
       });
       
   });
