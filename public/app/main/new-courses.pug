@@ -1,5 +1,5 @@
 .card
-  .card-header.text-center.card-header-rose New shows
+  .card-header.text-center.card-header-info New shows
   .card-body
     .row(ng-repeat="course in courses | orderBy:'published':true | limitTo: 10")
       .col-md-3 {{course.published | date: 'MMM d'}}
