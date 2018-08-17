@@ -37,6 +37,24 @@ angular.module('app')
 
         return deferred.promise;
       },
+
+      updateCurrentUser: function(newUserData) {
+        var deferred = $q.defer();
+
+        //mvIdentity has an instance of mvAuth service (with $resource methods)
+        // we want to copy it first, then if change was successful at it, otherwise mvIdentity might contain data that wasn't successfully saved on back end
+        var clone = angular.copy(mvIdentity.currentUser); 
+
+        clone.$update()
+          .then(function() {
+            mvIdentity.currentUser = clone;
+            deferred.resolve();
+          }, function(res) {
+            deferred.reject(res.data.reason);
+          });
+
+          deferred.promise;
+      },
       logoutUser: function() {
         var deferred = $q.defer();
         $http.post('/logout', {logout: true}).then(function() {
