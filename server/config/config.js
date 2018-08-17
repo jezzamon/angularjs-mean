@@ -11,6 +11,6 @@ module.exports = {
   production: {
     rootPath: rootPath,
     db: 'mongodb+srv://jezzamondev:' + mongopwd +'@cluster0-hkx6v.mongodb.net/multivision?retryWrites=true',
-    port: process.env.PORT || 80
+    port: process.env.PORT || 3030
   }
 }
