@@ -27,3 +27,32 @@ exports.createUser = function(req, res, next) {
     })
   })
 }
+
+exports.updateUser = function(req, res) {
+  var userUpdates = req.body;
+
+  // check - the user update is from same user that is logged OR is admin
+  if(req.user._id != userUpdates._id && !req.user.hasRole('admin')) {
+    res.status(403);  // failed
+    return res.end();
+
+  }
+  
+  req.user.firstName = userUpdates.firstName;
+  req.user.lastName = userUpdates.lastName;
+  req.user.username = userUpdates.username;
+
+  if(userUpdates.password && userUpdates.password.length > 0) {
+    req.user.salt = encrypt.createSalt();
+    req.user.hashed_pwd = encrypt.hashPwd(req.user.salt, userUpdates.password);
+  }
+  
+  req.user.save(function(err) {
+    if(err) {
+      res.status(400); //error
+      return res.send({reason: err.toString()})
+    }
+    // success
+    res.send(req.user);
+  }); 
+};

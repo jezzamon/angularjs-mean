@@ -1,7 +1,7 @@
 var express = require('express');
 
-// var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
-var env = 'production';
+var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+// var env = 'production';
 
 
 var app = express();
@@ -20,4 +20,4 @@ require('./server/config/passport') ();
 require('./server/config/routes') (app);
 
 app.listen(config.port);
-console.log('listening on port ' + config.port + '...')
+console.log('listening on port ' + config.port + '...');
