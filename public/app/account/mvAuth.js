@@ -53,6 +53,13 @@ angular.module('app')
         } else {
           return $q.reject('not authorized')
         }
+      },
+      authorizeAuthenticatedUserForRoute: function() {
+        if (mvIdentity.isAuthenticated()) {
+          return true;
+        } else {
+          return $q.reject('not authorized');
+        }
       }
     }
   }])

@@ -16,4 +16,6 @@ div(ng-controller="mvNavBarLoginCtrl")
         li.dropdown-item(ng-show="identity.currentUser.isAdmin()")
           a(href='/admin/users') User Admin
         li.dropdown-item
+          a(ref="/profile") Profile
+        li.dropdown-item
           a(href='#' ng-click="signout()") Sign out
