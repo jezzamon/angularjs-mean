@@ -2,10 +2,10 @@ angular.module('app')
     .controller('mvMainCtrl', [
     '$scope',
     'mvShows',
-    function($scope, mvShows) {
+    function($scope, mvCachedShows) {
 
 
-    $scope.shows = mvShows.query();
+    $scope.shows = mvCachedShows.query();
 }]);
 
 
