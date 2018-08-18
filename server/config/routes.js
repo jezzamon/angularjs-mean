@@ -11,6 +11,7 @@ module.exports = function(app) {
   app.put('/api/users', users.updateUser);
   
   app.get('/api/shows', shows.getShows)
+  app.get('/api/shows/:id', shows.getShowById)
 
   
   // app.get('/partials/:partialPath', function(req, res) {

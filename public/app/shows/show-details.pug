@@ -10,5 +10,5 @@
           .card
             .card-header.card-header-info.text-center Tags
             .card-body
-              div(ng-repeat="tag in show.tags") {{tag}}
+              span(style="margin-right: 5px", class="badge badge-pill badge-info", ng-repeat="tag in show.tags") {{tag}}
 
