@@ -9,6 +9,13 @@ module.exports = function(app) {
   app.post('/api/users', users.createUser);
   app.put('/api/users', users.updateUser);
 
+  app.post('/login', auth.authenticate);
+
+  app.post('/logout', function(req, res) {
+    // logout method added to req obj by passport
+    req.logout();
+    res.end();
+  });
 
   // app.get('/partials/:partialPath', function(req, res) {
   //   res.render('partials/' + req.params.partialPath);
@@ -19,12 +26,8 @@ module.exports = function(app) {
     res.render('../../public/app/' + req.params[0]);  // the first index will be what matches with asterisk
   });
 
-  app.post('/login', auth.authenticate);
-
-  app.post('/logout', function(req, res) {
-    // logout method added to req obj by passport
-    req.logout();
-    res.end();
+  app.all('/api/*', function(req, res) {
+    res.sendStatus(404);
   });
 
    // IMPORTANT: this route must come last  - app.get('*') routing to avoid circular errors
@@ -33,6 +36,5 @@ module.exports = function(app) {
       bootstrappedUser: req.user
     });
   });
-
 
 }

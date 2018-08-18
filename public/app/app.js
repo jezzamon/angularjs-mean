@@ -28,6 +28,9 @@ angular.module('app', ['ngResource', 'ngRoute'])
       })
       .when('/profile', { templateUrl: '/partials/account/profile', 
         controller: 'mvProfileCtrl', resolve: routeRoleChecks.user
+      })
+      .when('/shows', { templateUrl: '/partials/shows/shows-list', 
+        controller: 'mvShowsListCtrl'
       });
       
   });

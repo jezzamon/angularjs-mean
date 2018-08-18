@@ -1,0 +1,11 @@
+.main
+  .container
+    table.table.table-striped
+      thead
+        tr
+          th Title
+          th Publish Date
+        tbody
+          tr(ng-repeat="show in courses")
+            td {{show.name}}
+            td {{show.published | date }}
