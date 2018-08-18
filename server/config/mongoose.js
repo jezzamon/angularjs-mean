@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var userModel = require('../models/User');
+var showModel = require('../models/Show');
 
 module.exports = function (config) {
   // mongoose connection
@@ -12,5 +13,6 @@ module.exports = function (config) {
   });
 
   userModel.createDefaultUsers();
+  showModel.createDefaultShows();
 
 }

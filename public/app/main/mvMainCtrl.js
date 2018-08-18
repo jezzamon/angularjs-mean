@@ -4,18 +4,18 @@ angular.module('app')
     function($scope) {
 
 
-    $scope.courses = [
-      {name: 'Terrace House', featured: true, published: new Date(2018, 3, 16, 33)},
-      {name: 'Serie Noir', featured: true, published: new Date(2018, 3, 16, 33)},
-      {name: 'Outlander', featured: true, published: new Date(2018, 3, 16, 33)},
-      {name: 'Better Call Saul', featured: true, published: new Date(2018, 3, 16, 33)},
-      {name: 'Fargo', featured: true, published: new Date(2018, 3, 16, 33)},
-      {name: 'Breaking Bad', featured: true, published: new Date(2018, 3, 16, 33)},
-      {name: 'Outlander', featured: false, published: new Date(2018, 3, 16, 33)},
-      {name: 'Barry', featured: false, published: new Date(2018, 3, 16, 33)},
-      {name: 'Insecure', featured: false, published: new Date(2018, 3, 16, 33)},
-      {name: 'Atlanta', featured: false, published: new Date(2018, 3, 16, 33)},
-      {name: 'The defiant ones', featured: false, published: new Date(2018, 3, 16, 33)},
+    $scope.shows = [
+      {title: 'Terrace House', featured: true, published: new Date(2018, 3, 16, 33)},
+      {title: 'Serie Noir', featured: true, published: new Date(2018, 3, 16, 33)},
+      {title: 'Outlander', featured: true, published: new Date(2018, 3, 16, 33)},
+      {title: 'Better Call Saul', featured: true, published: new Date(2018, 3, 16, 33)},
+      {title: 'Fargo', featured: true, published: new Date(2018, 3, 16, 33)},
+      {title: 'Breaking Bad', featured: true, published: new Date(2018, 3, 16, 33)},
+      {title: 'Outlander', featured: false, published: new Date(2018, 3, 16, 33)},
+      {title: 'Barry', featured: false, published: new Date(2018, 3, 16, 33)},
+      {title: 'Insecure', featured: false, published: new Date(2018, 3, 16, 33)},
+      {title: 'Atlanta', featured: false, published: new Date(2018, 3, 16, 33)},
+      {title: 'The defiant ones', featured: false, published: new Date(2018, 3, 16, 33)},
       
     ]
 }]);

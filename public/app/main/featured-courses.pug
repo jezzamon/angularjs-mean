@@ -1,5 +1,5 @@
 .card
   .card-header.text-center.card-header-info Featured Shows
   .card-body
-    .row(ng-repeat="course in courses | filter: { featured: true}")
-      .col-md-12 {{course.name}}
+    .row(ng-repeat="show in shows | filter: { featured: true}")
+      .col-md-12 {{show.title}}
