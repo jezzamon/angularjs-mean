@@ -3,7 +3,13 @@ angular.module('app')
     '$scope',
     'mvShows',
     '$routeParams',
-    function($scope, mvShows, $routeParams) {
-
-    $scope.show = mvShows.get({ _id : $routeParams.id})
+    function($scope, mvCachedShows, $routeParams) {
+      mvCachedShows.query().$promise
+        .then(function(collection) {
+          collection.forEach(function(show) {
+            if (show._id === $routeParams.id) {
+              $scope.show = show;
+            }
+          })
+        })
   }])
