@@ -19,6 +19,12 @@ footer p {
 .form-inline button {
   margin-left: 10px;
 }
+.top-padding-med {
+  padding-top: 10px;
+}
+.margin-left-med {
+  margin-left: 10px;
+}
 .toast-success {
   background-color: #9c27b0;
 }

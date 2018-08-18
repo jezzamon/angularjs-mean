@@ -1,11 +1,16 @@
 .main
-  .container
+  .container.top-padding-med
+    form.form-inline.float-right
+      .form-group
+        input.form-control(ng-model="searchText", placeholder="Filter")
+      .form-group
+        select.form-control(ng-model="sortOrder", ng-options="item.value as item.text for item in sortOptions")
     table.table.table-hover
       thead.thead-light
         tr
           th Title
           th Publish Date
         tbody
-          tr(ng-repeat="show in shows")
+          tr(ng-repeat="show in shows | filter: searchText | orderBy: sortOrder")
             td {{show.title}}
             td {{show.published | date }}
