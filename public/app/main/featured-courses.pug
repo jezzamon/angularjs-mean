@@ -2,4 +2,5 @@
   .card-header.text-center.card-header-info Featured Shows
   .card-body
     .row(ng-repeat="show in shows | filter: { featured: true}")
-      .col-md-12 {{show.title}}
+      .col-md-12 
+        a(href="/shows/{{show._id}}") {{show.title}}

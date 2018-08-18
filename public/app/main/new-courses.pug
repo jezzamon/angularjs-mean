@@ -3,4 +3,5 @@
   .card-body
     .row(ng-repeat="show in shows | orderBy:'published':true | limitTo: 10")
       .col-md-3 {{show.published | date: 'MMM d'}}
-      .col-md-9 {{show.title}}
+      .col-md-9
+        a(href="/shows/{{show._id}}") {{show.title}}

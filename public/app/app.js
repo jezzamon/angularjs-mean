@@ -31,6 +31,9 @@ angular.module('app', ['ngResource', 'ngRoute'])
       })
       .when('/shows', { templateUrl: '/partials/shows/shows-list', 
         controller: 'mvShowsListCtrl'
+      })
+      .when('/shows/:id', { templateUrl: '/partials/shows/show-details', 
+        controller: 'mvShowDetailCtrl'
       });
       
   });

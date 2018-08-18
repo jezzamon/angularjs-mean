@@ -12,5 +12,6 @@
           th Publish Date
         tbody
           tr(ng-repeat="show in shows | filter: searchText | orderBy: sortOrder")
-            td {{show.title}}
+            td
+              a(href="/shows/{{show._id}}") {{show.title}}
             td {{show.published | date }}
